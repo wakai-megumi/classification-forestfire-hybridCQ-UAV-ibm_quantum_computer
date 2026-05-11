@@ -1,0 +1,42 @@
+{
+  "architecture": "EfficientNetQuantumClassifier",
+  "backbone": "EfficientNet-B0 (pretrained ImageNet)",
+  "quantum_circuit": "StronglyEntanglingLayers",
+  "n_qubits": 4,
+  "q_depth": 1,
+  "class_names": [
+    "Fire",
+    "No_Fire"
+  ],
+  "input_size": 224,
+  "n_classes": 2,
+  "training": {
+    "epochs": 10,
+    "batch_size": 32,
+    "lr_initial": 0.0005,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingLR",
+    "unfreeze_epoch": 3,
+    "label_smoothing": 0.05
+  },
+  "test_results": {
+    "Accuracy (%)": 99.0,
+    "Precision (%)": 99.0196,
+    "Recall (%)": 99.0,
+    "F1 Score (%)": 98.9999,
+    "AUC (%)": 100.0
+  },
+  "full_dataset_results": {
+    "Accuracy (%)": 99.3371,
+    "Precision (%)": 99.3849,
+    "Recall (%)": 99.1845,
+    "F1 Score (%)": 99.2833
+  },
+  "classical_baseline_results": {
+    "Accuracy (%)": 99.3333,
+    "Precision (%)": 99.3421,
+    "Recall (%)": 99.3333,
+    "F1 Score (%)": 99.3333,
+    "AUC (%)": 99.9956
+  }
+}

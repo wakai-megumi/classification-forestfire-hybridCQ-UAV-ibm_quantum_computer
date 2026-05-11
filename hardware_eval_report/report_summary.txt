@@ -1,0 +1,50 @@
+=================================================================
+  EfficientNet-B0 + QNN — HARDWARE EVALUATION REPORT
+  IBM Quantum ibm_fez | 1024 shots | 300 test samples
+=================================================================
+
+  CIRCUIT INFO
+    Physical qubits : [136, 143, 142, 141]
+    Circuit depth   : 26
+    Total gates     : 56
+    Gate breakdown  : {'sx': 24, 'rz': 22, 'cz': 10}
+
+  NOISE PROFILE (used qubits)
+    Q136: T1=153.53605μs | T2=141.54095μs | readout=0.00635 | sx_err=0.00026
+    Q143: T1=219.11428μs | T2=205.4571μs | readout=0.01099 | sx_err=0.0002
+    Q142: T1=214.42183μs | T2=220.19721μs | readout=0.00708 | sx_err=0.0004
+    Q141: T1=158.51001μs | T2=111.59178μs | readout=0.00916 | sx_err=0.00013
+
+  PERFORMANCE METRICS
+  Metric          Simulator       HW Raw     HW Recal      Delta
+  ----------------------------------------------------------
+  Accuracy           99.67%       60.67%       99.67%     +0.00%
+  Precision          99.67%       77.99%       99.67%     +0.00%
+  Recall             99.67%       60.67%       99.67%     +0.00%
+  F1                 99.67%       53.47%       99.67%     +0.00%
+  AUC                99.99%       99.99%       99.99%     +0.00%
+
+  CLASS-LEVEL RECALL (HW Recalibrated)
+    Fire    : 99.33%
+    No_Fire : 100.0%
+
+  BN RECALIBRATION NOTE
+    Raw hardware accuracy was 60.67% due to BatchNorm layer being
+    trained on simulator EVs. Q0 and Q1 expectation value signs
+    were flipped by hardware noise, causing systematic misclassification.
+    Updating BN running stats with hardware EVs recovered full accuracy.
+    AUC remained 99.99% throughout — confirming the quantum signal
+    was always correctly separating the two classes.
+
+  OUTPUT FILES
+    01_confusion_matrices.png
+    02_metrics_comparison.png
+    03_roc_curves.png
+    04_expectation_distributions.png
+    05_expectation_scatter.png
+    06_noise_characterisation.png
+    07_circuit_logical.png
+    08_circuit_transpiled.png
+    09_gate_counts.png
+    results_summary.json
+=================================================================

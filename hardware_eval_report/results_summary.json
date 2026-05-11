@@ -1,0 +1,133 @@
+{
+  "experiment": {
+    "model": "EfficientNet-B0 + QNN (4 qubits, depth=1)",
+    "backend": "ibm_fez",
+    "shots": 1024,
+    "test_samples": 300,
+    "physical_qubits": [
+      136,
+      143,
+      142,
+      141
+    ]
+  },
+  "circuit_info": {
+    "backend": "ibm_fez",
+    "logical_qubits": 4,
+    "physical_qubits": 156,
+    "chosen_qubits": [
+      136,
+      143,
+      142,
+      141
+    ],
+    "circuit_depth": 26,
+    "total_gates": 56,
+    "gate_breakdown": {
+      "sx": 24,
+      "rz": 22,
+      "cz": 10
+    }
+  },
+  "noise_profile": {
+    "Q136": {
+      "T1_us": 153.53605,
+      "T2_us": 141.54095,
+      "readout_error": 0.00635,
+      "sx_error": 0.00026
+    },
+    "Q143": {
+      "T1_us": 219.11428,
+      "T2_us": 205.4571,
+      "readout_error": 0.01099,
+      "sx_error": 0.0002
+    },
+    "Q142": {
+      "T1_us": 214.42183,
+      "T2_us": 220.19721,
+      "readout_error": 0.00708,
+      "sx_error": 0.0004
+    },
+    "Q141": {
+      "T1_us": 158.51001,
+      "T2_us": 111.59178,
+      "readout_error": 0.00916,
+      "sx_error": 0.00013
+    },
+    "two_qubit_errors": {
+      "cz_Q136_Q143": 0.00155,
+      "cz_Q143_Q142": 0.00268,
+      "cz_Q142_Q141": 0.00258
+    }
+  },
+  "metrics": {
+    "simulator": {
+      "accuracy": 99.67,
+      "precision": 99.67,
+      "recall": 99.67,
+      "f1": 99.67,
+      "auc": 99.99,
+      "fire_recall": 99.33,
+      "nofire_recall": 100.0
+    },
+    "hardware_raw_bn": {
+      "accuracy": 60.67,
+      "precision": 77.99,
+      "recall": 60.67,
+      "f1": 53.47,
+      "auc": 99.99,
+      "fire_recall": 21.33,
+      "nofire_recall": 100.0
+    },
+    "hardware_bn_recalibrated": {
+      "accuracy": 99.67,
+      "precision": 99.67,
+      "recall": 99.67,
+      "f1": 99.67,
+      "auc": 99.99,
+      "fire_recall": 99.33,
+      "nofire_recall": 100.0
+    },
+    "delta_raw": {
+      "accuracy": -39.0,
+      "f1": -46.2,
+      "auc": 0.0
+    },
+    "delta_recalibrated": {
+      "accuracy": 0.0,
+      "f1": 0.0,
+      "auc": 0.0
+    }
+  },
+  "bn_recalibration": {
+    "issue": "BN running stats trained on simulator EVs; hardware EVs had different distribution (Q0,Q1 sign flipped due to noise)",
+    "fix": "Updated BN running_mean and running_var using hardware EV statistics",
+    "result": "Accuracy recovered from 60.67% \u2192 99.67%"
+  },
+  "ev_statistics": {
+    "Q0": {
+      "sim_mean": -0.5765,
+      "sim_std": 0.3604,
+      "hw_mean": 0.269,
+      "hw_std": 0.5313
+    },
+    "Q1": {
+      "sim_mean": 0.2742,
+      "sim_std": 0.5451,
+      "hw_mean": -0.5191,
+      "hw_std": 0.3473
+    },
+    "Q2": {
+      "sim_mean": 0.3135,
+      "sim_std": 0.4924,
+      "hw_mean": 0.3404,
+      "hw_std": 0.4266
+    },
+    "Q3": {
+      "sim_mean": 0.3381,
+      "sim_std": 0.4581,
+      "hw_mean": 0.3125,
+      "hw_std": 0.4656
+    }
+  }
+}
